@@ -43,7 +43,7 @@ import java.util.Random;
 import static com.mag_solutions.dooreyebox1.CameraFragment.isCameraRunning;
 import static com.mag_solutions.dooreyebox1.SplashActivity.generateId;
 
-public class MainActivity extends AppCompatActivity implements CameraFragment.CapturedImageListener {
+public class MainActivity extends AppCompatActivity implements Camera2Fragment.CapturedImageListener {
 
     private static String TAG = "MainActivity";
     public static Boolean isChecking = false;
@@ -208,7 +208,9 @@ public class MainActivity extends AppCompatActivity implements CameraFragment.Ca
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot1) {
                 Log.d(TAG, "instant image path \n"+ dataSnapshot1.getValue());
-                MainActivity.this.motion.setVisitorImage(dataSnapshot1.getValue().toString());
+                if (dataSnapshot1.getValue() != null)
+                    MainActivity.this.motion.setVisitorImage(dataSnapshot1.getValue().toString());
+
                 boxHistoryRef.child("motions").child(String.valueOf(MainActivity.this.motion.getEventTime()))
                         .setValue(MainActivity.this.motion);
 
@@ -254,7 +256,9 @@ public class MainActivity extends AppCompatActivity implements CameraFragment.Ca
     private void initiateCameraFragment() {
         Log.d(TAG, "initiateCameraFragment: ");
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container_camera, new CameraFragment(this),"camera_fragment")
+                .replace(R.id.container_camera,
+                        new Camera2Fragment(this,Camera2Fragment.CAMERA_FRAGMENT_FOR_MOTION),
+                        "camera_fragment")
                 .commit();
     }
     private void closeCameraFragment() {

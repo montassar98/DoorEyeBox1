@@ -31,7 +31,7 @@ import java.util.Random;
 
 import static com.mag_solutions.dooreyebox1.SplashActivity.generateId;
 
-public class HandleCallActivity extends AppCompatActivity implements CameraFragment.CapturedImageListener {
+public class HandleCallActivity extends AppCompatActivity implements Camera2Fragment.CapturedImageListener {
     private static final String TAG = "HandleCallActivity";
 
     //firebase initiation
@@ -69,7 +69,9 @@ public class HandleCallActivity extends AppCompatActivity implements CameraFragm
     private void initiateCameraFragment() {
         Log.d(TAG, "initiateCameraFragment: ");
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container_camera, new  CameraFragment(this),"camera_fragment")
+                .replace(R.id.container_camera,
+                        new  Camera2Fragment(this,Camera2Fragment.CAMERA_FRAGMENT_FOR_RING),
+                        "camera_fragment")
                 .commit();
     }
 

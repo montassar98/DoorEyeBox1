@@ -1,14 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/topLayout"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextureView
-        android:id="@+id/textureView"
-        android:layout_width="640px"
-        android:layout_height="640px"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:fitsSystemWindows="true"
+    android:layout_gravity="center"
+    android:keepScreenOn="true">
+
+    <com.mag_solutions.dooreyebox1.ui.camera.CameraSourcePreview
+        android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_height="wrap_content">
+
+        <com.mag_solutions.dooreyebox1.ui.camera.GraphicOverlay
+            android:id="@+id/faceOverlay"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content" />
+
+
+    </com.mag_solutions.dooreyebox1.ui.camera.CameraSourcePreview>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_connecting"
+        android:textSize="35sp"
+        android:text="Calling..."
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"/>
+    <ProgressBar
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:id="@+id/progress_bar_calling"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/txt_connecting"
+        />
+</RelativeLayout>
