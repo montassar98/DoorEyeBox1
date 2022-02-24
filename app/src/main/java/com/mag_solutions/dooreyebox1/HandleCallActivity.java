@@ -107,7 +107,7 @@ public class HandleCallActivity extends AppCompatActivity implements Camera2Frag
                 //handler for ending a call after an amount of seconds
                 new Handler(Looper.getMainLooper()).postDelayed(() ->{
                     endCallAndRingNotificationManager();
-                    },10 * 1000);
+                    },20 * 1000);
 
                 boxUsersRef.addChildEventListener(new ChildEventListener() {
                     @Override

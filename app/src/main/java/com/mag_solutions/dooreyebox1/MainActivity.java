@@ -12,6 +12,7 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -190,6 +191,8 @@ public class MainActivity extends AppCompatActivity implements Camera2Fragment.C
         if (aBoolean){
             Toast.makeText(this, "call received", Toast.LENGTH_SHORT).show();
             visitorCalled = true;
+            MediaPlayer media = MediaPlayer.create(this, R.raw.doorbell_rington);
+            media.start();
            startActivity(new Intent(MainActivity.this, HandleCallActivity.class));
            finish();
         }
